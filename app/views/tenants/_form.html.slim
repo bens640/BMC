@@ -1,0 +1,69 @@
+= form_for @tenant do |f|
+  - if @tenant.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@tenant.errors.count, "error")} prohibited this tenant from being saved:"
+      ul
+        - @tenant.errors.full_messages.each do |message|
+          li = message
+  .row
+    .large-6.columns
+      |Name of Business
+      = f.text_field :name
+    .large-6.columns
+      |Owner
+      = f.text_field :owner
+  .row
+    .large-3.columns
+      |Owner's Email
+      = f.email_field :email
+    .large-3.columns
+      |Owner's Phone Number
+      = f.telephone_field :phone
+    .large-4.columns
+      |Business Type
+      = f.text_field :b_type
+    .large-2.columns
+      |Property
+      = f.collection_select(:property_id, @properties, :id, :name)
+  .row
+    .large-2.columns
+      |Unit Number
+      = f.text_field :unit_number
+    .large-2.columns
+      |Square Feet
+      = f.number_field :sqft
+    .large-2.columns
+      |Length in Months
+      = f.text_field :lease_length
+    .large-3.columns
+      |Start Date
+      = f.date_field :start
+    .large-3.columns
+      |End Date
+      = f.date_field :end
+  .row
+    .large-2.columns
+      |Rent per month
+      = f.number_field :rent
+    .large-2.columns
+      |CAM per month
+      = f.number_field :cam
+    .large-4.columns
+      |Increase type
+      = f.select(:increase_type, Tenant::INCREASE_PERIOD, {include_blank: 'Increase Time Period?'})
+    .large-3.columns
+      |Increase Amount in Percent
+      = f.select(:increase_amount, Tenant::INCREASE_AMOUNT, {include_blank: 'Increase Amount?'})
+  .row
+    .large-4.columns
+      |Renewal Option
+      = f.text_field :renewal_options
+    .large-4.columns
+      |Security Deposit
+      = f.number_field :security_deposit
+    .large-4.columns
+      |First and Last Month's Deposit
+      = f.number_field :first_last
+
+    .button.expand
+      = f.submit

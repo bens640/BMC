@@ -1,0 +1,48 @@
+p#notice = notice
+
+p.text-center
+  strong
+    = @property.name
+p.text-center
+  | #{@property.address}, #{@property.city}
+p.text-center
+  | #{@property.state}, #{@property.zip}
+p.text-center
+  strong  Total Sqft: #{number_with_delimiter(@property.sqft)}
+
+
+
+
+br/
+
+= link_to "New Tenant", new_property_tenant_path(params[:id])
+br/
+table
+  thead
+    tr
+      th.text-center Name
+      th.text-center Unit
+      th.text-center Start Date
+      th.text-center End Date
+      th.text-center Net Rentable Sqft
+      th.text-center Average monthly rent
+      th.text-center 2015 Annual Rent and Cam
+      th.text-center 2015 Anuual rent per sqft
+      th.text-center annual increase %
+      th
+  tbody
+    -@tenants.each do |t|
+      tr
+        td.text-center = t.name
+        td.text-center = t.unit_number
+        td.text-center = t.start.strftime('%D')
+        td.text-center = t.end.strftime('%D')
+        td.text-center = number_with_delimiter(t.sqft)
+        td.text-center = number_to_currency(t.rent + t.cam)
+        td.text-center = number_to_currency((t.rent + t.cam) * 12)
+        td.text-center = number_to_currency(((t.rent + t.cam) * 12) / t.sqft)
+        td.text-center = t.increase_amount
+
+br/
+br/
+= link_to 'Home', root_path

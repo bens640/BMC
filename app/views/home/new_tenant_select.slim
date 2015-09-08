@@ -1,0 +1,3 @@
+h1 Please Choose the property
+
+= select_tag 'properties', options_from_collection_for_select(@properties, 'id', 'name'),:onchange => "this.form.submit();"

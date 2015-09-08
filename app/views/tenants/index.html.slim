@@ -1,0 +1,29 @@
+h1 Listing tenants
+
+table
+  thead
+    tr
+      th Name
+      th Owner
+      th Phone
+      th Email
+      th Tenant Type
+      th
+      th
+      th
+
+  tbody
+    - @tenants.each do |tenant|
+      tr
+        td = tenant.name
+        td = tenant.owner
+        td = tenant.phone
+        td = tenant.email
+        td = tenant.b_type
+        td = link_to 'Show', tenant
+        td = link_to 'Edit', edit_tenant_path(tenant)
+        td = link_to 'Destroy', tenant, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Tenant', new_tenant_path

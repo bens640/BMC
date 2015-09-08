@@ -1,0 +1,23 @@
+nav.top-bar[data-topbar]
+  ul.title-area
+    li.toggle-topbar.menu-icon
+      a[href="#"]
+        span
+          | Menu
+  .logo
+    a[href="http://zurb.com/stickers/images/intro-foundation.png"]
+      img[src="http://zurb.com/stickers/images/intro-foundation.png"]
+  section.top-bar-section
+    ul.center-buttons
+      li.divider
+      li
+        = link_to "Home", root_path
+
+      li.divider
+      li
+        = link_to "New Tenant", new_tenant_path
+      li.divider
+      li
+        a[href="#"]
+          | Centered Button
+      li.divider

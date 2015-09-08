@@ -1,0 +1,43 @@
+                Prefix Verb   URI Pattern                                   Controller#Action
+                  root GET    /                                             home#index
+            properties GET    /properties(.:format)                         properties#index
+                       POST   /properties(.:format)                         properties#create
+          new_property GET    /properties/new(.:format)                     properties#new
+         edit_property GET    /properties/:id/edit(.:format)                properties#edit
+              property GET    /properties/:id(.:format)                     properties#show
+                       PATCH  /properties/:id(.:format)                     properties#update
+                       PUT    /properties/:id(.:format)                     properties#update
+                       DELETE /properties/:id(.:format)                     properties#destroy
+          unit_tenants GET    /units/:unit_id/tenants(.:format)             tenants#index
+                       POST   /units/:unit_id/tenants(.:format)             tenants#create
+       new_unit_tenant GET    /units/:unit_id/tenants/new(.:format)         tenants#new
+      edit_unit_tenant GET    /units/:unit_id/tenants/:id/edit(.:format)    tenants#edit
+           unit_tenant GET    /units/:unit_id/tenants/:id(.:format)         tenants#show
+                       PATCH  /units/:unit_id/tenants/:id(.:format)         tenants#update
+                       PUT    /units/:unit_id/tenants/:id(.:format)         tenants#update
+                       DELETE /units/:unit_id/tenants/:id(.:format)         tenants#destroy
+                 units GET    /units(.:format)                              units#index
+                       POST   /units(.:format)                              units#create
+              new_unit GET    /units/new(.:format)                          units#new
+             edit_unit GET    /units/:id/edit(.:format)                     units#edit
+                  unit GET    /units/:id(.:format)                          units#show
+                       PATCH  /units/:id(.:format)                          units#update
+                       PUT    /units/:id(.:format)                          units#update
+                       DELETE /units/:id(.:format)                          units#destroy
+         tenant_leases GET    /tenants/:tenant_id/leases(.:format)          leases#index
+                       POST   /tenants/:tenant_id/leases(.:format)          leases#create
+      new_tenant_lease GET    /tenants/:tenant_id/leases/new(.:format)      leases#new
+     edit_tenant_lease GET    /tenants/:tenant_id/leases/:id/edit(.:format) leases#edit
+          tenant_lease GET    /tenants/:tenant_id/leases/:id(.:format)      leases#show
+                       PATCH  /tenants/:tenant_id/leases/:id(.:format)      leases#update
+                       PUT    /tenants/:tenant_id/leases/:id(.:format)      leases#update
+                       DELETE /tenants/:tenant_id/leases/:id(.:format)      leases#destroy
+               tenants GET    /tenants(.:format)                            tenants#index
+                       POST   /tenants(.:format)                            tenants#create
+            new_tenant GET    /tenants/new(.:format)                        tenants#new
+           edit_tenant GET    /tenants/:id/edit(.:format)                   tenants#edit
+                tenant GET    /tenants/:id(.:format)                        tenants#show
+                       PATCH  /tenants/:id(.:format)                        tenants#update
+                       PUT    /tenants/:id(.:format)                        tenants#update
+                       DELETE /tenants/:id(.:format)                        tenants#destroy
+home_new_tenant_select GET    /home/new_tenant_select(.:format)             home#new_tenant_select

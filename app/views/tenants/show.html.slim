@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @tenant.name
+p
+  strong Owner:
+  = @tenant.owner
+p
+  strong Phone:
+  = @tenant.phone
+p
+  strong Email:
+  = @tenant.email
+p
+  strong Type:
+  = @tenant.b_type
+p
+  strong Length:
+  =@tenant.lease_length
+p
+  strong Property:
+  =@tenant.property.name
+
+= link_to 'Edit', edit_tenant_path(@tenant)
+'|
+= link_to 'Back to property', :back
