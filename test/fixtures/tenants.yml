@@ -5,11 +5,11 @@ one:
   owner: MyString
   phone: MyString
   email: MyString
-  type: 
+
 
 two:
   name: MyString
   owner: MyString
   phone: MyString
   email: MyString
-  type: 
+

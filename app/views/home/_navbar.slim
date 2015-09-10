@@ -15,9 +15,16 @@ nav.top-bar[data-topbar]
 
       li.divider
       li
-        = link_to "New Tenant", new_tenant_path
+        - if logged_in?
+          = link_to "New Tenant", new_tenant_path
       li.divider
       li
-        a[href="#"]
-          | Centered Button
+        - if logged_in?
+          = link_to "Logout", logout_path
+
+        - if !logged_in?
+          = link_to "Login", login_path
       li.divider
+      li
+        -if logged_in?
+          = link_to current_user.name, current_user

@@ -1,9 +1,10 @@
-h1 Welcome to the BMC Portal
-h2 Please choose a property to begin
-- @properties.each do |p|
-  .panel
-    = link_to p.name, p
-br/
-= link_to "New property", new_property_path
-br/
-= link_to 'New Tenant', home_new_tenant_select_path
+h1.text-center Welcome to the BMC Portal
+-if logged_in?
+  - @properties.each do |p|
+    .panel
+      = link_to p.name, p
+  br/
+  = link_to "New property", new_property_path
+  br/
+  = link_to 'New Tenant', home_new_tenant_select_path
+

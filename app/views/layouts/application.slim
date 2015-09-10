@@ -8,4 +8,7 @@ html
     = csrf_meta_tags
   body
     = render 'home/navbar'
+    - flash.each do |message_type, message|
+       = content_tag(:div, message)
     = yield
+= debug(params) if Rails.env.development?

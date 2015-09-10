@@ -17,7 +17,7 @@ br/
 
 = link_to "New Tenant", new_property_tenant_path(params[:id])
 br/
-table
+table.small-centered
   thead
     tr
       th.text-center Name
@@ -29,7 +29,7 @@ table
       th.text-center 2015 Annual Rent and Cam
       th.text-center 2015 Anuual rent per sqft
       th.text-center annual increase %
-      th
+
   tbody
     -@tenants.each do |t|
       tr
@@ -42,7 +42,16 @@ table
         td.text-center = number_to_currency((t.rent + t.cam) * 12)
         td.text-center = number_to_currency(((t.rent + t.cam) * 12) / t.sqft)
         td.text-center = t.increase_amount
-
+    tr
+      td Total
+      td
+      td
+      td
+      td.text-center = Tenant.where(property_id: params[:id]).sum(:sqft)
+      td.text-center = Tenant.where(property_id: params[:id]).sum(:rent)
+      td
+      td
+      td
 br/
 br/
 = link_to 'Home', root_path
