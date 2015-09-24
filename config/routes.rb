@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   end
   resources :tenants
 
+  # resources :estimator, only: [:show]
   get 'home/new_tenant_select'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+  get 'estimator' => 'estimator#show'
+
 
   resources :users
 
