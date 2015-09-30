@@ -28,3 +28,6 @@ nav.top-bar[data-topbar]
       li
         -if logged_in?
           = link_to current_user.name, current_user
+      li.divider
+      li
+        = link_to "Estimator", estimator_path
