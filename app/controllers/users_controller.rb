@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    p params
     if @user.save
       log_in(@user)
       flash[:success] = "Welcome to BMC"
@@ -18,8 +19,9 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  def edit
-    @user = User.find(params[:id])
+
+  def update
+    @user = current_user
     if @user.update_attributes(user_params)
       flash[:success] = "Profile Updated"
       redirect_to @user
@@ -27,11 +29,14 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  def edit
+    @user = current_user
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :owner)
   end
 
 

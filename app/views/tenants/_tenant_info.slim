@@ -1,0 +1,24 @@
+table.small-centered
+  thead
+    tr
+      th.text-center Year
+      th.text-center Annual Rent
+      th.text-center Monthly Rent
+      th.text-center Monthly Cam
+      th.text-center Monthly Sales Tax
+      th.text-center Monthly Tax Deposits
+      th.text-center Monthly Rent Payment
+      th.text-center Parking Fee Reimbursement
+      th.text-center Total Monthly Payment
+
+  tbody
+    tr
+      th.text-center 2015
+      td.text-center = number_to_currency(@tenant.rent * 12)
+      td.text-center = number_to_currency(@tenant.rent)
+      td.text-center = number_to_currency(@total_cam)
+      td.text-center = number_to_currency((@tenant.rent + @total_cam) * 0.07)
+      td.text-center TBD
+      td.text-center = number_to_currency(@tenant.rent + @total_cam + @sales_tax)
+      td.text-center 0
+      td.text-center = number_to_currency(@tenant.rent + @total_cam + @sales_tax)

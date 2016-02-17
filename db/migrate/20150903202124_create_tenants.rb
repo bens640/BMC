@@ -10,15 +10,18 @@ class CreateTenants < ActiveRecord::Migration
       t.string :email
       t.string :b_type
       t.string :lease_length
-      t.date :start
-      t.date :end
-      t.integer :rent
-      t.integer  "cam"
-      t.string   "increase_type"
-      t.string   "increase_amount"
-      t.string   "renewal_options"
-      t.integer  "security_deposit"
-      t.integer  "first_last"
+      t.date     :start
+      t.date     :end
+      t.date     :commencement
+      t.string   :payment_method
+      t.string   :late_payment
+      t.integer  :rent
+      t.integer  :cam
+      t.integer   :increase_type
+      t.integer   :increase_amount
+      t.integer  :security_deposit
+      t.integer  :first
+      t.integer  :last
 
       t.timestamps null: false
     end

@@ -1,27 +1,52 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @tenant.name
-p
-  strong Owner:
-  = @tenant.owner
-p
-  strong Phone:
-  = @tenant.phone
-p
-  strong Email:
-  = @tenant.email
-p
-  strong Type:
-  = @tenant.b_type
-p
-  strong Length:
-  =@tenant.lease_length
-p
-  strong Property:
-  =@tenant.property.name
 
-= link_to 'Edit', edit_tenant_path(@tenant)
-'|
-= link_to 'Back to property', :back
+
+p#notice = notice
+h1.text-center Rent Summary
+h3.text-center = @tenant.name + ' - Unit ' + @tenant.unit_number
+h4.text-center #{@tenant.owner+ ' ' + number_to_phone(@tenant.phone) + ' ' + @tenant.email}
+
+br/
+
+.row
+  strong.small-2.columns Lease Term:
+  .small-2.columns = @tenant.lease_length
+  .small-4.columns.end = format_date(@tenant.start) + '-' + format_date(@tenant.end)
+/.row
+/  strong.small-2.columns Renewal:
+/  .small-2.columns #{'('+ @tenant.renewal_options + ') ' + @tenant.renewal_amount + ' YR Option'}
+/  - @tenant.renewal_options.to_i.times do |t|
+/    .row
+/      .small-4.columns.large-offset-4.end = format_date(@tenant.end.advance(:years => + ((t) * @tenant.renewal_amount.to_i))) +'-' + format_date(@tenant.end.advance(:years => + ((t+ 1) * @tenant.renewal_amount.to_i)))
+.row
+  strong.small-2.columns Commencment:
+  .small-2.columns.end = format_date @tenant.commencement
+.row
+  strong.small-2.columns Leased SQFT:
+  .small-2.columns.end =@tenant.sqft
+.row
+  strong.small-2.columns Security Deposit:
+  .small-2.columns.end = number_to_currency(@tenant.security_deposit)
+
+
+br/
+= render 'tenants/tenant_info'
+= render 'tenants/payment_info'
+
+
+=render 'payment/form'
+/ul.tabs[data-tab]
+/  li.tab-title.active
+/    a[href="#panel1"]
+/      | Yearly payment information
+/  li.tab-title
+/    a[href="#panel2"]
+/      | Monthly Payment information
+/
+/
+/.tabs-content
+/  #panel1.content.active
+/    = render 'tenants/tenant_info'
+/  #panel2.content
+/    = render 'tenants/payment_info'

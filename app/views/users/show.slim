@@ -1,9 +1,14 @@
+//Profile Page for User
 h1.text-center
   = @user.name
 h3.text-center
   = @user.email
+h4.text-center
+  - if is_admin?
+    = 'I am the Admin'
 br/
 br/
 br/
 .text-center
   = link_to "Edit Profile", edit_user_path(current_user)
+p

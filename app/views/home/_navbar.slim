@@ -14,15 +14,16 @@ nav.top-bar[data-topbar]
         = link_to "Home", root_path
 
       li.divider
-      li
-        - if logged_in?
-          = link_to "New Tenant", new_tenant_path
-      li.divider
-      li
-        - if logged_in?
-          = link_to "Logout", logout_path
+      - if logged_in?
+        li
+          - if is_admin?
+            = link_to "New Tenant", new_tenant_path
+        li.divider
+        li
+            = link_to "Logout", logout_path
 
-        - if !logged_in?
+      - else
+        li
           = link_to "Login", login_path
       li.divider
       li

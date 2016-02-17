@@ -55,15 +55,18 @@
       |Increase Amount in Percent
       = f.select(:increase_amount, Tenant::INCREASE_AMOUNT, {include_blank: 'Increase Amount?'})
   .row
-    .large-4.columns
-      |Renewal Option
-      = f.text_field :renewal_options
+    /.large-4.columns
+    /  |Renewal Option
+    /  = f.select(:renewal_options, Tenant::RENEWAL_OPTIONS, {include_blank: 'Renewal Options'})
+    /.large-4.columns
+    /  |Renewal Amount
+    /  = f.select(:renewal_amount, Tenant::RENEWAL_OPTIONS, {include_blank: 'Renewal Amount'})
     .large-4.columns
       |Security Deposit
       = f.number_field :security_deposit
-    .large-4.columns
-      |First and Last Month's Deposit
-      = f.number_field :first_last
+    /.large-4.columns
+    /  |First and Last Month's Deposit
+    /  = f.number_field :first_last
 
     .button.expand
       = f.submit

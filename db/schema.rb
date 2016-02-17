@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910172816) do
+ActiveRecord::Schema.define(version: 20150911174136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "tenant_id"
+    t.date     "date"
+    t.integer  "amount"
+    t.boolean  "paid_in_full"
+    t.integer  "amount_under"
+    t.string   "p_type"
+    t.string   "rent_month"
+    t.string   "check_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string   "name"
@@ -39,13 +52,16 @@ ActiveRecord::Schema.define(version: 20150910172816) do
     t.string   "lease_length"
     t.date     "start"
     t.date     "end"
+    t.date     "commencement"
+    t.string   "payment_method"
+    t.string   "late_payment"
     t.integer  "rent"
     t.integer  "cam"
-    t.string   "increase_type"
-    t.string   "increase_amount"
-    t.string   "renewal_options"
+    t.integer  "increase_type"
+    t.integer  "increase_amount"
     t.integer  "security_deposit"
-    t.integer  "first_last"
+    t.integer  "first"
+    t.integer  "last"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -53,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150910172816) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.boolean  "admin"
+    t.boolean  "owner"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"

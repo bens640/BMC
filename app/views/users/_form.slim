@@ -17,6 +17,12 @@
     .large-6.small-centered.columns
       |Password Confirmation
       = f.password_field :password_confirmation
+      -if logged_in?
+        -if is_admin?
+          |Admin?
+          = f.check_box :admin
+          |Owner?
+          = f.check_box :owner
   .row
     .large-6.small-centered.columns
       = f.submit 'Submit'

@@ -1,5 +1,5 @@
 p#notice = notice
-
+h1.text-center Tenant Rent Summary
 p.text-center
   strong
     = @property.name
@@ -15,7 +15,7 @@ p.text-center
 
 br/
 
-= link_to "New Tenant", new_property_tenant_path(params[:id])
+= link_to "New Tenant", new_property_tenant_path(params[:id]), class: 'small-centered'
 br/
 table.small-centered
   thead
@@ -33,10 +33,10 @@ table.small-centered
   tbody
     -@tenants.each do |t|
       tr
-        td.text-center = t.name
+        td.text-center = link_to t.name, t
         td.text-center = t.unit_number
-        td.text-center = t.start.strftime('%D')
-        td.text-center = t.end.strftime('%D')
+        td.text-center = format_date t.start
+        td.text-center = format_date t.end
         td.text-center = number_with_delimiter(t.sqft)
         td.text-center = number_to_currency(t.rent + t.cam)
         td.text-center = number_to_currency((t.rent + t.cam) * 12)

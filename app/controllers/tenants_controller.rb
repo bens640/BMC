@@ -1,5 +1,6 @@
 class TenantsController < ApplicationController
   before_action :set_tenant, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [:create]
 
   # GET /tenants
   # GET /tenants.json
@@ -10,7 +11,11 @@ class TenantsController < ApplicationController
   # GET /tenants/1
   # GET /tenants/1.json
   def show
-    @lease = Tenant.where(property_id: params[:id])
+    @total_cam = (@tenant.cam * @tenant.sqft)/12
+    @sales_tax = (@tenant.rent + @total_cam) * 0.07
+
+    @payments = Payment.where(tenant_id: params[:id])
+    @payment = Payment.new
   end
 
   # GET /tenants/new
@@ -64,6 +69,11 @@ class TenantsController < ApplicationController
   end
 
   private
+    def set_property
+      @property = Property.find(params[:property_id])
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_tenant
       @tenant = Tenant.find(params[:id])

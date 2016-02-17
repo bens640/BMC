@@ -1,0 +1,24 @@
+
+table.small-centered
+  thead
+    tr
+      th.text-center Date
+      th.text-center Amount
+      th.text-center Paid in Full?
+      th.text-center Amount over or under
+      th.text-center Payment Type
+      th.text-center Actual Rent per Month
+      th.text-center Check Number
+
+  tbody
+    -@payments.each do |payment|
+      tr
+        td.text-center = payment.date
+        td.text-center = number_to_currency(payment.amount)
+        td.text-center = payment.paid_in_full
+        td.text-center = number_to_currency(payment.amount_under)
+        td.text-center = payment.p_type
+        td.text-center = number_to_currency(payment.rent_month)
+        td.text-center = payment.check_number
+
+= link_to "New Payment", new_tenant_payment_path(params[:id]), class: 'small-centered'

@@ -24,11 +24,27 @@
                        PATCH  /tenants/:id(.:format)                              tenants#update
                        PUT    /tenants/:id(.:format)                              tenants#update
                        DELETE /tenants/:id(.:format)                              tenants#destroy
+       tenant_payments GET    /tenants/:tenant_id/payments(.:format)              payments#index
+                       POST   /tenants/:tenant_id/payments(.:format)              payments#create
+    new_tenant_payment GET    /tenants/:tenant_id/payments/new(.:format)          payments#new
+   edit_tenant_payment GET    /tenants/:tenant_id/payments/:id/edit(.:format)     payments#edit
+        tenant_payment GET    /tenants/:tenant_id/payments/:id(.:format)          payments#show
+                       PATCH  /tenants/:tenant_id/payments/:id(.:format)          payments#update
+                       PUT    /tenants/:tenant_id/payments/:id(.:format)          payments#update
+                       DELETE /tenants/:tenant_id/payments/:id(.:format)          payments#destroy
+                       GET    /tenants(.:format)                                  tenants#index
+                       POST   /tenants(.:format)                                  tenants#create
+                       GET    /tenants/new(.:format)                              tenants#new
+                       GET    /tenants/:id/edit(.:format)                         tenants#edit
+                       GET    /tenants/:id(.:format)                              tenants#show
+                       PATCH  /tenants/:id(.:format)                              tenants#update
+                       PUT    /tenants/:id(.:format)                              tenants#update
+                       DELETE /tenants/:id(.:format)                              tenants#destroy
 home_new_tenant_select GET    /home/new_tenant_select(.:format)                   home#new_tenant_select
                 signup GET    /signup(.:format)                                   users#new
                  login GET    /login(.:format)                                    sessions#new
                        POST   /login(.:format)                                    sessions#create
-                logout DELETE /logout(.:format)                                   sessions#destroy
+                logout GET    /logout(.:format)                                   sessions#destroy
                  users GET    /users(.:format)                                    users#index
                        POST   /users(.:format)                                    users#create
               new_user GET    /users/new(.:format)                                users#new
