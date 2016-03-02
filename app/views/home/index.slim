@@ -1,8 +1,9 @@
 h1.text-center Welcome to the BMC Portal
 -if logged_in?
   - @properties.each do |p|
-    .panel
-      = link_to p.name, p
+    .panel.panel-default
+      .panel-body
+        = link_to p.name, p
   br/
   = link_to "New property", new_property_path
   br/

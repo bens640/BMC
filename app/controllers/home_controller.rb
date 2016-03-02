@@ -7,5 +7,6 @@ class HomeController < ApplicationController
 
   def new_tenant_select
     @properties = Property.all
+
   end
 end

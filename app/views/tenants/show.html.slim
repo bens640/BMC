@@ -1,33 +1,25 @@
 p#notice = notice
-
-
-
-p#notice = notice
 h1.text-center Rent Summary
-h3.text-center = @tenant.name + ' - Unit ' + @tenant.unit_number
+h4.text-center = @tenant.name + ' - Unit ' + @tenant.unit_number
 h4.text-center #{@tenant.owner+ ' ' + number_to_phone(@tenant.phone) + ' ' + @tenant.email}
 
 br/
 
-.row
-  strong.small-2.columns Lease Term:
-  .small-2.columns = @tenant.lease_length
-  .small-4.columns.end = format_date(@tenant.start) + '-' + format_date(@tenant.end)
-/.row
-/  strong.small-2.columns Renewal:
-/  .small-2.columns #{'('+ @tenant.renewal_options + ') ' + @tenant.renewal_amount + ' YR Option'}
-/  - @tenant.renewal_options.to_i.times do |t|
-/    .row
-/      .small-4.columns.large-offset-4.end = format_date(@tenant.end.advance(:years => + ((t) * @tenant.renewal_amount.to_i))) +'-' + format_date(@tenant.end.advance(:years => + ((t+ 1) * @tenant.renewal_amount.to_i)))
-.row
-  strong.small-2.columns Commencment:
-  .small-2.columns.end = format_date @tenant.commencement
-.row
-  strong.small-2.columns Leased SQFT:
-  .small-2.columns.end =@tenant.sqft
-.row
-  strong.small-2.columns Security Deposit:
-  .small-2.columns.end = number_to_currency(@tenant.security_deposit)
+.panel.panel-default
+  .panel-body
+    .row
+      strong.col-sm-4.col-md-offset-2 Lease Term:
+      .col-sm-2 = @tenant.lease_length
+      .col-sm-4.end = format_date(@tenant.start) + '-' + format_date(@tenant.end)
+    .row
+      strong.col-sm-4.col-md-offset-2 Commencment:
+      .col-sm-4 = format_date @tenant.commencement
+    .row
+      strong.col-sm-4.col-md-offset-2 Leased SQFT:
+      .col-sm-4 =@tenant.sqft
+    .row
+      strong.col-sm-4.col-md-offset-2 Security Deposit:
+      .col-sm-4 = number_to_currency(@tenant.security_deposit)
 
 
 br/

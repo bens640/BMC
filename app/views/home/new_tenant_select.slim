@@ -1,3 +1,6 @@
 h1 Please Choose the property
 
-= select_tag 'properties', options_from_collection_for_select(@properties, 'id', 'name'),:onchange => "this.form.submit();"
+-@properties.each do |props|
+  = link_to props.name.capitalize, new_tenant_path(props.id)
+  br/
+

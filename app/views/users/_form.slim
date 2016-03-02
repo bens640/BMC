@@ -2,27 +2,30 @@
 = form_for @user do |f|
   = render 'shared/error_messages'
   .row
-    .large-6.small-centered.columns
-      |Name
-      = f.text_field :name
+    .form-group
+      .col-lg-2.col-lg-offset-5
+        |Name
+        = f.text_field :name, class: 'form-control'
   .row
-    .large-6.small-centered.columns
-      |Email
-      = f.email_field :email
+    .form-group
+      .col-lg-2.col-lg-offset-5
+        |Email
+        = f.email_field :email, class: 'form-control'
   .row
-    .large-6.small-centered.columns
-      |Password
-      = f.password_field :password
+    .form-group
+      .col-lg-2.col-lg-offset-5
+        |Password
+        = f.password_field :password, class: 'form-control'
   .row
-    .large-6.small-centered.columns
-      |Password Confirmation
-      = f.password_field :password_confirmation
-      -if logged_in?
-        -if is_admin?
-          |Admin?
-          = f.check_box :admin
-          |Owner?
-          = f.check_box :owner
+    .form-group
+      .col-lg-2.col-lg-offset-5
+        |Password Confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+        -if logged_in?
+          -if is_admin?
+            |Admin?
+            = f.check_box :admin
+            |Owner?
+            = f.check_box :owner
   .row
-    .large-6.small-centered.columns
-      = f.submit 'Submit'
+    = f.submit 'Submit', class: 'btn btn-primary btn-lg center-block'
