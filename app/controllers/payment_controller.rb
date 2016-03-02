@@ -1,20 +1,30 @@
 class PaymentController < ApplicationController
-  before_action :set_payment, only:[:show, :edit, :update, :destroy]
-  def index
-    @payments = Payment.all
-  end
-
-  def show
-    @payment = Payment.where(tenant_id: params[:id])
-  end
+  before_action :set_payment, except: :create
+  before_action :set_all_payments, except: :create
 
   def new
-    @payment = Payment.new
+
+  end
+
+  def index
+
   end
 
   def create
     @payment = Payment.new(payment_params)
+
     @payment.tenant_id = params[:id]
+
+
+    if @payment.save
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    else
+      flash[:alert] = "Check the message form, something went wrong."
+      render root_path
+    end
 
   end
   def edit
@@ -35,8 +45,12 @@ class PaymentController < ApplicationController
       @payment = Payment.find(params[:id])
     end
 
+    def set_all_payments
+       @all_payments = Payment.find(params[:id])
+    end
+
     def payment_params
-      params.require(:tenant).permit(:tenant_id, :date, :amount, :paid_in_full, :amount_under, :p_type, :rent_month,
+      params.require(:payment).permit(:tenant_id, :date, :amount, :paid_in_full, :amount_under, :p_type, :rent_month,
                                      :check_number)
     end
 

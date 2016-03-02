@@ -9,18 +9,16 @@ Rails.application.routes.draw do
   end
 
   resources :tenants
-  resources :tenants do
-    resources :payments
-  end
-
-  resource :payments
 
   get 'home/new_tenant_select'
+
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
 
+  # get 'payment/new'
+  post 'tenants/:id' => 'payment#create', as: 'payment'
   resources :users
 
 

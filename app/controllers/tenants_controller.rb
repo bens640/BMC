@@ -2,50 +2,45 @@ class TenantsController < ApplicationController
   before_action :set_tenant, only: [:show, :edit, :update, :destroy]
   before_action :set_property, only: [:create]
 
-  # GET /tenants
-  # GET /tenants.json
+
   def index
     @tenants = Tenant.all
   end
 
-  # GET /tenants/1
-  # GET /tenants/1.json
+
   def show
     @total_cam = (@tenant.cam * @tenant.sqft)/12
     @sales_tax = (@tenant.rent + @total_cam) * 0.07
 
-    @payments = Payment.where(tenant_id: params[:id])
+    @all_payments = Payment.where(tenant_id: params[:id])
     @payment = Payment.new
   end
 
-  # GET /tenants/new
+
   def new
     @tenant = Tenant.new
     @properties = Property.all
   end
 
-  # GET /tenants/1/edit
+
   def edit
   end
 
-  # POST /tenants
-  # POST /tenants.json
+
   def create
     @tenant = Tenant.new(tenant_params)
 
     respond_to do |format|
       if @tenant.save
         format.html { redirect_to @tenant, notice: 'Tenant was successfully created.' }
-        format.json { render :show, status: :created, location: @tenant }
       else
         format.html { render :new }
-        format.json { render json: @tenant.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /tenants/1
-  # PATCH/PUT /tenants/1.json
+
+
   def update
     respond_to do |format|
       if @tenant.update(tenant_params)

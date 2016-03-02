@@ -1,4 +1,4 @@
-= form_for @tenant, @payment do |f|
+= form_for @payment, url: payment_path do |f|
   - if @payment.errors.any?
     #error_explanation
       h2 = "#{pluralize(@payment.errors.count, "error")} prohibited this tenant from being saved:"
@@ -6,29 +6,22 @@
         - @payment.errors.full_messages.each do |message|
           li = message
   .row
-    .large-6.columns
+    .large-2.columns
       |Date
       = f.date_field :date
-    .large-6.columns
+    .large-4.columns
       |Amount
       = f.number_field :amount
-  .row
-    .large-3.columns
-      |Paid in Full?
-      = f.check_box :paid_in_full
-    .large-3.columns
-      |Amount Over or Under
-      = f.number_field :amount_under
-    .large-4.columns
-      |Payment Type
-      = f.text_field :payment_type
+
     .large-2.columns
-      |Actual Rent Per Month
-      = f.number_field :rent_month
-  .row
+      |Payment Type
+      = f.text_field :p_type
+
     .large-2.columns
       |Check Number
       = f.text_field :check_number
-
-    .button.expand
-      = f.submit
+    .large-1.columns
+      |Paid in Full?
+      = f.check_box :paid_in_full
+    .button.medium-centered
+      = f.submit  'Add Payment'

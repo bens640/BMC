@@ -11,7 +11,7 @@ table.small-centered
       th.text-center Check Number
 
   tbody
-    -@payments.each do |payment|
+    -@all_payments.each do |payment|
       tr
         td.text-center = payment.date
         td.text-center = number_to_currency(payment.amount)
@@ -21,4 +21,3 @@ table.small-centered
         td.text-center = number_to_currency(payment.rent_month)
         td.text-center = payment.check_number
 
-= link_to "New Payment", new_tenant_payment_path(params[:id]), class: 'small-centered'
