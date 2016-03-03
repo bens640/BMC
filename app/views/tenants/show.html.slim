@@ -7,18 +7,18 @@ br/
 
 .panel.panel-default
   .panel-body
-    .row
-      strong.col-sm-4.col-md-offset-2 Lease Term:
+    .row.row-centered
+      strong.col-sm-2 Lease Term:
       .col-sm-2 = @tenant.lease_length
-      .col-sm-4.end = format_date(@tenant.start) + '-' + format_date(@tenant.end)
+      .col-sm-2 = format_date(@tenant.start) + '-' + format_date(@tenant.end)
     .row
-      strong.col-sm-4.col-md-offset-2 Commencment:
+      strong.col-sm-2.col-md-offset-4 Commencment:
       .col-sm-4 = format_date @tenant.commencement
     .row
-      strong.col-sm-4.col-md-offset-2 Leased SQFT:
+      strong.col-sm-2.col-md-offset-4 Leased SQFT:
       .col-sm-4 =@tenant.sqft
     .row
-      strong.col-sm-4.col-md-offset-2 Security Deposit:
+      strong.col-sm-2.col-md-offset-4 Security Deposit:
       .col-sm-4 = number_to_currency(@tenant.security_deposit)
 
 

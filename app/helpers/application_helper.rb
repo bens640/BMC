@@ -15,13 +15,8 @@ module ApplicationHelper
   def sales_tax
     @total * 0.07
   end
-  def total_monthly_rent(rent, cam)
-   return rent + cam
-  end
 
-  def total_annual_rent
-    @total * 12
 
-  end
+
 
 end

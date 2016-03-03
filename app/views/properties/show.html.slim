@@ -38,9 +38,9 @@ table.table.table-striped.table-hover
         td.text-center = format_date t.start
         td.text-center = format_date t.end
         td.text-center = number_with_delimiter(t.sqft)
-        td.text-center = number_to_currency(t.rent + t.cam)
-        td.text-center = number_to_currency((t.rent + t.cam) * 12)
-        td.text-center = number_to_currency(((t.rent + t.cam) * 12) / t.sqft)
+        td.text-center = total_monthly_rent t.rent, t.cam
+        td.text-center = total_annual_rent t.rent, t.cam
+        td.text-center = total_annual_rent_per t.rent, t.cam, t.sqft
         td.text-center = t.increase_amount
     tr
       td Total
