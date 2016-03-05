@@ -1,15 +1,17 @@
 
 = form_for(:session, url: login_path) do |f|
   .row
-    .large-6.small-centered.columns
-      |Email
-      = f.email_field :email
+    .form-group
+      .col-lg-2.col-lg-offset-5
+        |Email
+        = f.email_field :email, class: 'form-control'
+  .row
+    .form-group
+      .col-lg-2.col-lg-offset-5
+        |Password
+        = f.password_field :password, class: 'form-control'
+        = f.check_box :remember_me
+        |    Remember Me?
   .row
     .large-6.small-centered.columns
-      |Password
-      = f.password_field :password
-      = f.check_box :remember_me
-      |    Remember Me on this computer?
-  .row
-    .large-6.small-centered.columns
-      = f.submit 'Log In'
+      = f.submit 'Log In' , class: 'btn btn-primary center-block'
